@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
   <div class="container">
     <div class="row">
@@ -14,7 +14,5 @@
     </div>
   </div>
 
-  <a class="btn btn-primary"href="{{route('guests.posts.index')}}">Torna Indietro</a>
-@endsection --}}
-
-<h1>sono qui</h1>
+  <a class="btn btn-primary"href="{{route('posts.index')}}">Torna Indietro</a>
+@endsection
