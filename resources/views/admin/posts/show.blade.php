@@ -4,13 +4,21 @@
     <div class="row">
       <div class="col">
           <h2 class="text-center"> Titolo: {{$post->title}}</h2>
+          <div class="">
+            <h3>Autore</h3>
+            <p>{{$post->user->name}}</p>
+            <p>{{$post->user->email}}</p>
+            <span>{{$post->user->created_at}}</span>
+          </div>
+          <div class="">
+            <img src="{{$post->image_path}}" alt="">
+          </div>
+          <div class="">
+            <p>{{$post->content}}</p>
+          </div>
       </div>
     </div>
-    {{-- <ul>
-      @foreach ($posts as $post)
-        <li>Autore: {{$post->user->name}} - {{$post->title}}
-        <a class="btn btn-secondary" href="">Dettagli</a> </li>
-      @endforeach
-    </ul> --}}
   </div>
+
+  <a class="btn btn-primary"href="{{route('admin.posts.index')}}">Torna Indietro</a>
 @endsection

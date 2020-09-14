@@ -3,14 +3,17 @@
   <div class="container">
     <div class="row">
       <div class="col">
-          <h1 class="text-center"> Ciao Ospite qui ci sono tutti i post</h1>
+          <h1 class="text-center"> BoldiBlog</h1>
       </div>
     </div>
-    <ul>
+    <div class="d-flex align-items-end">
       @foreach ($posts as $post)
-        <li> {{$post->title}}
-        <a class="btn btn-secondary" href="">Dettagli</a> </li>
+        <div class="">
+          <h4><a class="" href="">{{$post->title}}</a> </h4>
+          <img src="{{$post->image_path}}" alt="..." class="img-thumbnail">
+        </div>
       @endforeach
-    </ul>
+    </div>
+
   </div>
 @endsection
