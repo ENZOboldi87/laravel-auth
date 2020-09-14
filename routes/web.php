@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// route per amministratori
 Route::prefix('admin')
 ->namespace('Admin')
 ->middleware('auth')
@@ -28,4 +29,5 @@ Route::resource('posts', 'PostController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('post', 'PostController');
+// route per Guests
+Route::get('/posts', 'PostController@index');
