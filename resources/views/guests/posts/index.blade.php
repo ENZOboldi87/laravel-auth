@@ -9,8 +9,8 @@
     <div class="d-flex align-items-end">
       @foreach ($posts as $post)
         <div class="">
-          <h4><a class="" href="">{{$post->title}}</a> </h4>
-          <img src="{{$post->image_path}}" alt="..." class="img-thumbnail">
+          <h4><a class="" href="{{route('guests.posts.show', $post)}}">{{$post->title}}</a> </h4>
+          <a href="{{route('guests.posts.show', $post)}}"><img src="{{$post->image_path}}" alt="..." class="img-thumbnail"></a>
         </div>
       @endforeach
     </div>

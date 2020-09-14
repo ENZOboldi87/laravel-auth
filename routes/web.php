@@ -32,3 +32,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // route per Guests
 Route::get('/posts', 'PostController@index')->name('posts.index');
+
+Route::get('/posts', 'PostController@show')->name('posts.show');
