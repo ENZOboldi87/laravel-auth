@@ -9,7 +9,7 @@
     <ul>
       @foreach ($posts as $post)
         <li>Autore: {{$post->user->name}} - {{$post->title}}
-        <a class="btn btn-secondary" href="">Dettagli</a> </li>
+        <a class="btn btn-secondary" href="{{route('admin.posts.show', $post)}}">Dettagli</a> </li>
       @endforeach
     </ul>
   </div>
