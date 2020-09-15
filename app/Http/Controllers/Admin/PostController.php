@@ -42,7 +42,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
       $data = $request->all();
-
+      // dd($request->file());
       $path = $request->file('image_path')->store('images', 'public');
       $new_post = new Post();
       $new_post->user_id = Auth::id();

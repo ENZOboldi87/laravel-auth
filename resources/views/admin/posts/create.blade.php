@@ -2,7 +2,7 @@
 @section('content')
   <h1>Crea il post</h1>
 
-<form action="{{ route('admin.posts.store') }}" method="post">
+<form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
 	@csrf
 	@method('POST')
 
@@ -18,7 +18,7 @@
 
   <div>
     <label>Carica Immagine</label>
-    <input type="file" name="image_path" accept="image/*" enctype="multipart/form-data">
+    <input type="file" name="image_path" accept="image/jpeg">
   </div>
 
 	<div>
