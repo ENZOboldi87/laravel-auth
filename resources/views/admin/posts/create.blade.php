@@ -2,6 +2,17 @@
 @section('content')
   <h1>Crea il post</h1>
 
+  {{-- validazione --}}
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
 <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
 	@csrf
 	@method('POST')

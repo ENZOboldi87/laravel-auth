@@ -10,8 +10,13 @@
       @foreach ($posts as $post)
         <div class="">
           <h4><a class="" href="{{route('posts.show', $post)}}">{{$post->title}}</a> </h4>
-          <a href="{{route('posts.show', $post)}}"><img src="{{$post->image_path}}" alt="..." class="img-thumbnail"></a>
-        </div>
+          <a href="{{route('posts.show', $post)}}">
+            @if (strpos($post->image_path,'lorempixel'))
+              <img src="{{$post->image_path}}" alt="{{$post->title}}" class="img-thumbnail">
+              @else
+              <img src=" {{ asset('storage') . '/' . $post->image_path }} " alt="{{$post->title}}" class="img-thumbnail">
+            @endif
+          </div>
       @endforeach
     </div>
 

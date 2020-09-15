@@ -5,7 +5,11 @@
       <div class="col">
           <h2 class="text-center"> Titolo: {{$post->title}}</h2>
           <div class="">
-            <img src="{{asset ('storage') . '/' . $post->image_path}}" alt="">
+            @if (strpos($post->image_path,'lorempixel'))
+              <img src="{{$post->image_path}}" alt="{{$post->title}}">
+              @else
+              <img src=" {{ asset('storage') . '/' . $post->image_path }} " alt="{{$post->title}}">
+            @endif
           </div>
           <div class="">
             <p>{{$post->content}}</p>
