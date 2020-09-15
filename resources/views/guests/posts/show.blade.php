@@ -5,7 +5,7 @@
       <div class="col">
           <h2 class="text-center"> Titolo: {{$post->title}}</h2>
           <div class="">
-            <img src="{{$post->image_path}}" alt="">
+            <img src="{{asset ('storage') . '/' . $post->image_path}}" alt="">
           </div>
           <div class="">
             <p>{{$post->content}}</p>

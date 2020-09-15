@@ -18,7 +18,7 @@
 
   <div>
     <label>Carica Immagine</label>
-    <input type="file" name="image_path" accept="image/jpeg">
+    <input type="file" name="image_path" accept="image/*">
   </div>
 
 	<div>

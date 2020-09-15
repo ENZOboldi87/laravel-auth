@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Post;
 use App\User;
+use App\Mail\MailPost;
 
 class PostController extends Controller
 {
@@ -42,7 +44,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
       $data = $request->all();
-      // dd($request->file());
       $path = $request->file('image_path')->store('images', 'public');
       $new_post = new Post();
       $new_post->user_id = Auth::id();
@@ -51,6 +52,8 @@ class PostController extends Controller
       $new_post->image_path = $path;
 
       $new_post->save();
+
+      Mail::to($new_post->user->email)->send(new MailPost);
 
       return redirect()->route('posts.show', $new_post);
 
@@ -102,8 +105,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }
