@@ -41,7 +41,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = $request->all();
+
+      $new_post = new Post();
+      $new_post->user_id = Auth::id();
+      $new_post->title = $data['title'];
+      $new_post->content = $data['content'];
+      $path = $request->file('image_path')->store('images', 'public');
+      $new_post->image_path = $path;
+      $new_post->save();
+
+      return redirect()->route('posts.show', $new_post);
+
     }
 
     /**
