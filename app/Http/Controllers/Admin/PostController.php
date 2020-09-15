@@ -43,14 +43,11 @@ class PostController extends Controller
     {
       $data = $request->all();
 
-      // dd($data);
-
+      $path = $request->file('image_path')->store('images', 'public');
       $new_post = new Post();
       $new_post->user_id = Auth::id();
       $new_post->title = $data['title'];
       $new_post->content = $data['content'];
-      $path = $request->file('image_path')->store('images', 'public');
-      dd($path);
       $new_post->image_path = $path;
 
       $new_post->save();
