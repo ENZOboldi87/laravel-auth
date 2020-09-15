@@ -16,6 +16,10 @@
 		<textarea name="content" rows="8" cols="80">{{ old('content') }}</textarea>
 	</div>
 
+  <div>
+    <label>Carica Immagine</label>
+    <input type="file" name="image_path" accept="image/*" enctype="multipart/form-data">
+  </div>
 
 	<div>
 		<input type="submit" value="Salva modifica">
