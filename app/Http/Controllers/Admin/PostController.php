@@ -80,8 +80,6 @@ class PostController extends Controller
     {
       $posts = Post::all();
 
-      // dd($users);
-
       return view ('admin.posts.edit', compact('post'));
     }
 
@@ -94,8 +92,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data = $request->all();
-        $post->update($data);
+      $request->validate($this->validazione());
+
+      $data_request = $request->all();
+
+        if (isset($data_request['image_path'])) {
+          $path = $request->file('image_path')->store('images', 'public');
+          $post->image_path = $path;
+        }
+        else {
+          $post->image_path = '';
+        }
+        $post->update();
+
+        $post->save();
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -110,5 +120,13 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index');
+    }
+
+    public function validazione() {
+      return [
+         'title' => 'required|max:255',
+         'content' => 'required|max:1000',
+         'image_path' => 'image',
+       ];
     }
 }
